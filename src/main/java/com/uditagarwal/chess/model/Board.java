@@ -1,8 +1,13 @@
 package com.uditagarwal.chess.model;
 
+import com.uditagarwal.chess.conditions.PieceCellOccupyBlocker;
+import com.uditagarwal.chess.conditions.PieceCellOccupyBlockerFactory;
+import com.uditagarwal.gameplay.Player;
 import lombok.Getter;
 
 import java.util.List;
+
+import static com.uditagarwal.chess.conditions.PieceCellOccupyBlockerFactory.kingCheckEvaluationBlockers;
 
 @Getter
 public class Board {
@@ -39,5 +44,24 @@ public class Board {
         }
 
         return cells[x][y];
+    }
+
+    public boolean isPlayerOnCheck(Player player) {
+        return checkIfPieceCanBeKilled(player.getPiece(PieceType.KING), kingCheckEvaluationBlockers());
+    }
+
+    public boolean checkIfPieceCanBeKilled(Piece targetPiece, List<PieceCellOccupyBlocker> cellOccupyBlockers) {
+        for (int i = 0; i < getBoardSize(); i++) {
+            for (int j = 0; j < getBoardSize(); j++) {
+                Piece currentPiece = getCellAtLocation(i, j).getCurrentPiece();
+                if (!currentPiece.isPieceFromSamePlayer(targetPiece)) {
+                    List<Cell> nextPossibleCells = currentPiece.nextPossibleCells(this, cellOccupyBlockers);
+                    if (nextPossibleCells.contains(targetPiece.getCurrentCell())) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }

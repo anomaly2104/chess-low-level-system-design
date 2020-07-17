@@ -16,4 +16,7 @@ public class Cell {
     private Piece currentPiece;
 
 
+    public boolean isFree() {
+        return currentPiece == null;
+    }
 }
