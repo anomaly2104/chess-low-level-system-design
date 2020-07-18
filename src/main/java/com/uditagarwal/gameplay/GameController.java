@@ -1,5 +1,6 @@
 package com.uditagarwal.gameplay;
 
+import com.uditagarwal.chess.model.Player;
 import com.uditagarwal.gameplay.contracts.PlayerMove;
 import com.uditagarwal.chess.model.Board;
 

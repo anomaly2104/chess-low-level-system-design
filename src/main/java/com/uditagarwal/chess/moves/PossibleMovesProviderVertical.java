@@ -1,5 +1,6 @@
 package com.uditagarwal.chess.moves;
 
+import com.uditagarwal.chess.conditions.MoveBaseCondition;
 import com.uditagarwal.chess.conditions.PieceCellOccupyBlocker;
 import com.uditagarwal.chess.conditions.PieceMoveFurtherCondition;
 import com.uditagarwal.chess.model.Board;

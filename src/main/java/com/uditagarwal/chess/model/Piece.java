@@ -3,7 +3,6 @@ package com.uditagarwal.chess.model;
 import com.uditagarwal.chess.conditions.PieceCellOccupyBlocker;
 import com.uditagarwal.chess.exceptions.InvalidMoveException;
 import com.uditagarwal.chess.moves.PossibleMovesProvider;
-import com.uditagarwal.gameplay.Player;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;

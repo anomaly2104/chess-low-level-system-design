@@ -1,4 +1,4 @@
-package com.uditagarwal.gameplay;
+package com.uditagarwal.chess.model;
 
 import com.uditagarwal.chess.exceptions.PieceNotFoundException;
 import com.uditagarwal.chess.model.PieceType;

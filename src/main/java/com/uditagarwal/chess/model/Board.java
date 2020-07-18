@@ -1,8 +1,6 @@
 package com.uditagarwal.chess.model;
 
 import com.uditagarwal.chess.conditions.PieceCellOccupyBlocker;
-import com.uditagarwal.chess.conditions.PieceCellOccupyBlockerFactory;
-import com.uditagarwal.gameplay.Player;
 import lombok.Getter;
 
 import java.util.List;

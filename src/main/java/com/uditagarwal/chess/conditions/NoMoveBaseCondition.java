@@ -1,4 +1,4 @@
-package com.uditagarwal.chess.moves;
+package com.uditagarwal.chess.conditions;
 
 import com.uditagarwal.chess.model.Piece;
 
