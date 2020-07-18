@@ -6,7 +6,7 @@ import com.uditagarwal.chess.model.Board;
 
 import java.util.List;
 
-import static com.uditagarwal.chess.conditions.PieceCellOccupyBlockerFactory.defaultBlockers;
+import static com.uditagarwal.chess.conditions.PieceCellOccupyBlockerFactory.defaultAdditionalBlockers;
 
 public class GameController {
 
@@ -16,7 +16,7 @@ public class GameController {
             Player player = players.get(currentPlayer);
             //TODO: Check if current player has any move possible. If no move possible, then its checkmate.
             PlayerMove playerMove = player.makeMove();
-            playerMove.getPiece().move(playerMove.getToCell(), board, defaultBlockers());
+            playerMove.getPiece().move(player, playerMove.getToCell(), board, defaultAdditionalBlockers());
             currentPlayer = (currentPlayer + 1) % players.size();
         }
     }

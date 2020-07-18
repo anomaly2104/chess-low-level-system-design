@@ -12,4 +12,7 @@
   * **And Operation**: We are allowed to do something if all conditions fulfill.  
   Try to improve the design for this.
 * Add history of moves for each player.
+* Add support for casteling move.
+* Can we remove putting currentCell in Piece? How about introducing something like position?
+    * A piece will have a position and you can always get the cell back from board using this position.
 

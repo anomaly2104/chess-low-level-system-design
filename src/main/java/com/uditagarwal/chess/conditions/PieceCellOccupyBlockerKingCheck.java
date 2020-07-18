@@ -1,14 +1,6 @@
 package com.uditagarwal.chess.conditions;
 
-import com.uditagarwal.chess.model.Board;
-import com.uditagarwal.chess.model.Cell;
-import com.uditagarwal.chess.model.Piece;
-import com.uditagarwal.chess.model.PieceType;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.uditagarwal.chess.conditions.PieceCellOccupyBlockerFactory.kingCheckEvaluationBlockers;
+import com.uditagarwal.chess.model.*;
 
 /**
  * This tells whether making piece move to a cell will attract check for king.
@@ -16,10 +8,10 @@ import static com.uditagarwal.chess.conditions.PieceCellOccupyBlockerFactory.kin
 public class PieceCellOccupyBlockerKingCheck implements PieceCellOccupyBlocker {
 
     @Override
-    public boolean isCellNonOccupiableForPiece(final Cell cell, final Piece piece, final Board board) {
+    public boolean isCellNonOccupiableForPiece(final Cell cell, final Piece piece, final Board board, Player player) {
         Cell pieceOriginalCell = piece.getCurrentCell();
         piece.setCurrentCell(cell);
-        boolean playerGettingCheckByMove = board.isPlayerOnCheck(piece.getPlayer());
+        boolean playerGettingCheckByMove = board.isPlayerOnCheck(player);
         piece.setCurrentCell(pieceOriginalCell);
         return playerGettingCheckByMove;
     }

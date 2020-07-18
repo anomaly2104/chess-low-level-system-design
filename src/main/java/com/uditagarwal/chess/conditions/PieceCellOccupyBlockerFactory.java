@@ -7,11 +7,15 @@ import java.util.List;
 
 public class PieceCellOccupyBlockerFactory {
 
-    public static List<PieceCellOccupyBlocker> defaultBlockers() {
-        return ImmutableList.of(new PieceCellOccupyBlockerSelfPiece(), new PieceCellOccupyBlockerKingCheck());
+    public static PieceCellOccupyBlocker defaultBaseBlocker() {
+        return new PieceCellOccupyBlockerSelfPiece();
+    }
+
+    public static List<PieceCellOccupyBlocker> defaultAdditionalBlockers() {
+        return ImmutableList.of(new PieceCellOccupyBlockerKingCheck());
     }
 
     public static List<PieceCellOccupyBlocker> kingCheckEvaluationBlockers() {
-        return ImmutableList.of(new PieceCellOccupyBlockerSelfPiece());
+        return ImmutableList.of();
     }
 }
