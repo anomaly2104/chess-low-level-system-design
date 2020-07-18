@@ -4,8 +4,11 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Model class representing the single cell of a board. A cell has a location in the grid which is represented by x
+ * and y location.
+ */
 @Getter
-@EqualsAndHashCode
 public class Cell {
 
     private int x;
@@ -16,10 +19,8 @@ public class Cell {
         this.y = y;
     }
 
-    //TODO: Ensure that this does not get used in equals.
     @Setter
     private Piece currentPiece;
-
 
     public boolean isFree() {
         return currentPiece == null;

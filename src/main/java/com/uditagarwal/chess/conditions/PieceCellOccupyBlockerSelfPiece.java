@@ -5,6 +5,9 @@ import com.uditagarwal.chess.model.Cell;
 import com.uditagarwal.chess.model.Piece;
 import com.uditagarwal.chess.model.Player;
 
+/**
+ * This tells that a cell cannot occupy a cell if that cell already has any piece from the same player.
+ */
 public class PieceCellOccupyBlockerSelfPiece implements PieceCellOccupyBlocker {
 
     @Override

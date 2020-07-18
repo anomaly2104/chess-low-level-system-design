@@ -11,6 +11,10 @@ import com.uditagarwal.chess.model.Player;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Provider class which returns all the possible cells for a given type of moves. For example, horizontal type of move
+ * will give all the cells which can be reached by making only horizontal moves.
+ */
 public abstract class PossibleMovesProvider {
     int maxSteps;
     MoveBaseCondition baseCondition;
@@ -24,6 +28,9 @@ public abstract class PossibleMovesProvider {
         this.baseBlocker = baseBlocker;
     }
 
+    /**
+     * Public method which actually gives all possible cells which can be reached via current type of move.
+     */
     public List<Cell> possibleMoves(Piece piece, Board inBoard, List<PieceCellOccupyBlocker> additionalBlockers, Player player) {
         if (baseCondition.isBaseConditionFullfilled(piece)) {
             return possibleMovesAsPerCurrentType(piece, inBoard, additionalBlockers, player);
@@ -31,6 +38,14 @@ public abstract class PossibleMovesProvider {
         return null;
     }
 
+    /**
+     * Abstract method which needs to be implemented by each type of move to give possible moves as per their behaviour.
+     */
+    protected abstract List<Cell> possibleMovesAsPerCurrentType(Piece piece, Board board, List<PieceCellOccupyBlocker> additionalBlockers, Player player);
+
+    /**
+     * Helper method used by all the sub types to create the list of cells which can be reached.
+     */
     protected List<Cell> findAllNextMoves(Piece piece, NextCellProvider nextCellProvider, Board board, List<PieceCellOccupyBlocker> cellOccupyBlockers, Player player) {
         List<Cell> result = new ArrayList<>();
         Cell nextCell = nextCellProvider.nextCell(piece.getCurrentCell());
@@ -49,6 +64,11 @@ public abstract class PossibleMovesProvider {
         return result;
     }
 
+    /**
+     * Helper method which checks if a given cell can be occupied by the piece or not. It makes use of list of
+     * {@link PieceCellOccupyBlocker}s passed to it while checking. Also each move has one base blocker which it should
+     * also check.
+     */
     private boolean checkIfCellCanBeOccupied(Piece piece, Cell cell, Board board, List<PieceCellOccupyBlocker> additionalBlockers, Player player) {
         if (baseBlocker != null && baseBlocker.isCellNonOccupiableForPiece(cell, piece, board, player)) {
             return false;
@@ -60,6 +80,4 @@ public abstract class PossibleMovesProvider {
         }
         return true;
     }
-
-    protected abstract List<Cell> possibleMovesAsPerCurrentType(Piece piece, Board board, List<PieceCellOccupyBlocker> additionalBlockers, Player player);
 }
