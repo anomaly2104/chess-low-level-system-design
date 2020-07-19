@@ -1,5 +1,8 @@
 # Chess - Low level system design ![Build status](https://travis-ci.org/anomaly2104/chess-low-level-system-design.svg?branch=master)
 
+## Video Explanation
+[https://youtu.be/RVHNcng0oF0](https://youtu.be/RVHNcng0oF0)
+
 ## Problem Statements
 [Problem Statement](problem-statement.md)
 
